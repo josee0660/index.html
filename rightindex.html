@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>CSS Envelope + Letter (Open/Close on Click)</title>
+    <link rel="stylesheet" href="rightstyle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong>Para sa aking minamahal na si Yanna,</strong>
+                        <p style="text-indent: 30px;">
+                                Happy 1st Anniversary po sa atin. Unang una po maraming salamat sa mga effort na ginagawa mo letters, pagkain at pagsuporta po sakin. 
+                            Sa pagtitiwala sakin sobrang laking dagdag po yon sa buhay ko nung dumating ka. 
+                            Hinihiling ko lang po na tumagal at tumatag pa po tayo at sana ma-achive natin mga pangarap natin sa buhay.
+                            Ikaw lang ang babaeng nakilala ko na handang tumulong sa ibang tao at hayop kahit na alam mong mashoshort ka sobra sobrang proud po ako na naging girlfriend kita.
+                            Andito ako palagi sa tabi mo para suportahan ka.
+                            Sana ma appreciate mo tong munting kakayahan ko para ipahiwatig ang aking liham para sayo.
+                        </p>
+                    </div>
+                    <br>
+                    <div class="signature">Palaging Iyo,<br>Jose</div> <!-- Signature added -->
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        const heart = document.querySelector('.heart'); // Select the heart element
+        let isFlapped = false; // Track the state of the envelope
+
+        envelope.addEventListener('click', () => {
+            if (!isFlapped) {
+                envelope.classList.add('flap'); // Add flap class to open envelope
+                heart.style.display = 'none'; // Hide the heart when opened
+                isFlapped = true; // Update the state to indicate it's flapped
+            } 
+            // The else block has been removed to prevent closing the envelope
+        });
+    </script>
+</body>
+</html>

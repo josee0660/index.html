@@ -1,0 +1,177 @@
+:root {
+  --primary: #fff;
+  --bg-color: PINK;
+  --bg-envelope-color: #a24857; /* Maroon color */
+  --envelope-tab: #a24857; /* Darker shade of maroon for the tab */
+  --envelope-cover: #ecdeb8; /* Lighter shade of maroon for the cover */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --txt-color: #444;
+  --heart-color: #ff0000; /* Red color for the heart */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.envelope-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-envelope-color); /* Maroon color */
+  box-shadow: 0 0 50px var(--shadow-color);
+  transform-origin: center;
+  transition: transform 0.7s ease-in-out;
+  z-index: 2; /* Keep this above the letter */
+}
+
+.envelope {
+  position: relative;
+  width: 700px; /* Increased width */
+  height: 500px; /* Increased height */
+  transition: transform 0.7s ease-in-out;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 2; /* Ensure the envelope tab is on top */
+  border-top: 350px solid var(--envelope-tab); /* Darker shade of maroon for the tab */
+  border-right: 350px solid transparent;
+  border-left: 350px solid transparent;
+  transform-origin: top;
+  transition: all 0.5s ease-in-out 0.7s;
+}
+
+.envelope::after {
+  content: "";
+  position: absolute;
+  z-index: 2; /* Ensure the envelope cover is on top */
+  width: 0px;
+  height: 0px;
+  border-top: 350px solid transparent;
+  border-right: 350px solid var(--envelope-cover); /* Lighter shade of maroon for the cover */
+  border-bottom: 250px solid var(--envelope-cover);
+  border-left: 350px solid var(--envelope-cover);
+}
+
+.letter {
+  position: absolute;
+  right: 16.5%;
+  bottom: -100px; /* Start at the bottom of the envelope */
+  width: 61%;
+  height: 100%; /* Slightly increased height */
+  background: linear-gradient(to bottom right, #fff 0%, #f0f0f0 100%); /* Soft gradient */
+  border: 2px solid #dcdcdc; /* Light border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  text-align: left; /* Align text to the left for a formal letter */
+  transition: all 1s ease-in-out;
+  padding: 30px 20px; /* Adjusted padding */
+  transform-origin: center;
+  font-size: 1px;
+  z-index: 1; /* Keep the letter behind the envelope initially */
+  perspective: 1000px; /* Add perspective for 3D effect */
+}
+
+.letter .text {
+  font-family: 'Georgia', serif; /* Elegant serif font */
+  color: var(--txt-color);
+  font-size: 18px; /* Increased font size */
+  line-height: 1.8; /* Increased line height for readability */
+}
+
+.signature {
+  margin-top: -20px; /* Space for the signature */
+  font-family: 'Brush Script MT', cursive; /* Cursive font for the signature */
+  font-size: 24px; /* Larger font size for the signature */
+  color: #333; /* Dark color for the signature */
+  text-align: right; /* Align signature to the right */
+}
+
+.heart {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  width: 60px; /* Slightly increased size */
+  height: 60px; /* Slightly increased size */
+  background: var(--heart-color); /* Red color */
+  z-index: 3;
+  transform: translate(-50%, -50%) rotate(45deg); /* Center heart horizontally and vertically */
+  transition: transform 0.5s ease-in-out 1s;
+  box-shadow: 0 1px 6px var(--shadow-color);
+  cursor: pointer;
+  animation: beat 1s infinite;
+}
+
+.heart:before, 
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: var(--heart-color); /* Red color */
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -30px;
+}
+
+.heart:after {
+  right: 30px;
+}
+
+/* Beating Heart Animation */
+@keyframes beat {
+  0%, 100% {
+      transform: translate(-50%, -50%) rotate(45deg) scale(1);
+  }
+  50% {
+      transform: translate(-50%, -50%) rotate(45deg) scale(1.2);
+  }
+}
+
+/* Add this rule to expand the envelope and letter when the flap class is applied */
+.flap > .envelope-wrapper {
+  transform: scale(1.5);
+  transition: transform 0.7s ease-in-out;
+}
+
+.flap > .envelope {
+  transform: scale(1.5);
+}
+
+.flap > .envelope > .letter {
+  bottom: 150px; /* Move the letter up when envelope is flapped open */
+  transform: scale(1.5); /* Scale up the letter for better visibility */
+  transition-delay: 1s; /* Delay to allow for envelope opening */
+  z-index: 3; /* Bring letter to front when opened */
+}
+
+.flap > .heart {
+  transform: rotate(90deg) scale(1.5);
+  transition-delay: 0.4s;
+}
+
+.flap > .envelope:before {
+  transform: rotateX(180deg);
+  z-index: 0; /* Ensure the envelope tab is behind the letter */
+}

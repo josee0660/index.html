@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Image Slider</title>
+  <link rel="stylesheet" href="final.css">
+  <link rel="stylesheet" href="headerstyle.css">
+  <link rel="stylesheet" href="catstyle.css">
+  
+<body>
+  <audio id="catSound" src="meow.mp3"></audio>
+  <div class="cat">
+    <div class="cat-body">
+        <div class="cat-head">
+            <div class="cat-ear cat-ear-left"></div>
+            <div class="cat-ear cat-ear-right"></div>
+            <div class="cat-eye cat-eye-left"></div>
+            <div class="cat-eye cat-eye-right"></div>
+            <div class="cat-nose"></div>
+            <div class="cat-mouth"></div>
+            <div class="cat-whiskers cat-whiskers-left"></div>
+            <div class="cat-whiskers cat-whiskers-left2"></div>
+            <div class="cat-whiskers cat-whiskers-left3"></div>
+            <div class="cat-whiskers cat-whiskers-right"></div>
+            <div class="cat-whiskers cat-whiskers-right2"></div>
+            <div class="cat-whiskers cat-whiskers-right3"></div>
+        </div>
+    </div>
+</div>
+
+<script src="headerscript.js"></script>
+
+<div class="container">
+    <!-- Image Slider Start -->
+    <div class="slider">
+      <div class="slides">
+        <!-- Radio Buttons Start -->
+        <input type="radio" name="radio-btn" id="radio1" checked>
+        <input type="radio" name="radio-btn" id="radio2">
+        <input type="radio" name="radio-btn" id="radio3">
+        <input type="radio" name="radio-btn" id="radio4">
+        <input type="radio" name="radio-btn" id="radio5">
+        <input type="radio" name="radio-btn" id="radio6">
+        <input type="radio" name="radio-btn" id="radio7">
+        <input type="radio" name="radio-btn" id="radio8">
+        <!-- Radio Buttons End -->
+
+        <!-- Slide Images Start -->
+        <div class="slide first">
+          <img src="1.jpg" alt="">
+        </div>
+        <div class="slide">
+          <img src="2.jpg" alt="">
+        </div>
+        <div class="slide">
+          <img src="3.jpg" alt="">
+        </div>
+        <div class="slide">
+          <img src="4.jpg" alt="">
+        </div>
+        <div class="slide">
+          <img src="5.jpg" alt="">
+        </div>
+        <div class="slide">
+          <img src="6.jpg" alt="">
+        </div>
+        <div class="slide">
+          <img src="7.jpg" alt="">
+        </div>
+        <div class="slide">
+          <img src="8.jpg" alt="">
+        </div>
+        <!-- Slide Images End -->
+
+        <!-- Automatic Navigation Start -->
+        <div class="navigation-auto">
+          <div class="auto-btn1"></div>
+          <div class="auto-btn2"></div>
+          <div class="auto-btn3"></div>
+          <div class="auto-btn4"></div>
+          <div class="auto-btn5"></div>
+          <div class="auto-btn6"></div>
+          <div class="auto-btn7"></div>
+          <div class="auto-btn8"></div>
+        </div>
+        <!-- Automatic Navigation End -->
+      </div>
+
+      <!-- Manual Navigation Start -->
+      <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+        <label for="radio5" class="manual-btn"></label>
+        <label for="radio6" class="manual-btn"></label>
+        <label for="radio7" class="manual-btn"></label>
+        <label for="radio8" class="manual-btn"></label>
+      </div>
+      <!-- Manual Navigation End -->
+    </div>
+    <!-- Image Slider End -->
+
+    <!-- Text Container on the Right -->
+    <div class="text-container">
+      <p>Happy 1st Anniversary Mah onleh smol gurl in the pelepens. Lahat ng alaga natin nag bubunyi sa ating Anibersaryo. Sa iyong ngiti, ako'y nahuhumaling. Sana ay tumangkad ka na pati ako syempre ano ka swerte ikaw lang.
+        Click mo ung box nasa baba neto may ibibigay daw sayo  </p>
+    </div>
+</div>
+
+<div class="catcontainer">
+  <div onclick="window.location.href='rightindex.html'" class="box">
+      <div class="b1"> </div>
+      <div class="b2"> </div>
+      <div class="cat1"> 
+          <div onclick="window.location.href='rightindex.html'" class="face">
+              <div class="lower"> </div>
+              <div class="ear-l"> </div>
+              <div class="ear-r"> </div>
+              <div class="eye-l">
+                  <div class="eye"></div> <!-- Add eyeball inside left eye -->
+              </div>
+              <div class="eye-r">
+                  <div class="eye"></div> <!-- Add eyeball inside right eye -->
+              </div>   
+      <div class="nose"> </div>
+  </div>
+  <div class="hat">
+      <div class="deco">
+      <div class="d1"> </div>
+      <div class="d2"> </div>
+      <div class="d3"> </div>
+      <div class="d4"> </div>
+  </div>
+  </div>
+</div>
+</div>
+<div class="shadow"></div>
+
+  <script type="text/javascript">
+    var counter = 1;
+    var interval;
+
+    function startAutoSlide() {
+      interval = setInterval(function() {
+        document.getElementById('radio' + counter).checked = true;
+        counter++;
+        if (counter > 8) {
+          counter = 1;
+        }
+      }, 5000);
+    }
+
+    startAutoSlide();
+
+    document.querySelectorAll('.manual-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        clearInterval(interval);
+      });
+    });
+  </script>
+
+  <script src="finalscript.js"></script>
+
+</body>
+</html>

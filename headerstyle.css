@@ -1,0 +1,155 @@
+.cat {
+    position: fixed; /* Fix position to the viewport */
+    top: 35px; /* Adjust distance from the top */
+    left: 70px; /* Adjust distance from the left */
+    width: 180px; /* Original width for the cat */
+    height: 180px; /* Original height for the cat */
+    cursor: pointer;
+    animation: cat-bounce 3s ease-in-out infinite;
+}
+
+.cat-body {
+    position: relative;
+    background-color: #ffcc99;
+    border-radius: 20%; /* Maintain circular shape */
+    width: 90%; /* Ensure it fills the cat container */
+    height: 90%; /* Ensure it fills the cat container */
+}
+
+.cat-head {
+    position: absolute;
+    top: 35px; /* Keep the head in place */
+    left: 50%;
+    width: 120px; /* Original head size */
+    height: 120px; /* Original head size */
+    background-color: #ff9966;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.cat-ear {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #ff9966;
+    border-radius: 50%;
+}
+
+.cat-ear-left {
+    top: -20px;
+    left: 10px;
+    transform: rotate(-20deg);
+}
+
+.cat-ear-right {
+    top: -20px;
+    right: 10px;
+    transform: rotate(20deg);
+}
+
+.cat-eye {
+    position: absolute;
+    width: 15px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 50%;
+}
+
+.cat-eye-left {
+    top: 40px;
+    left: 35px;
+}
+
+.cat-eye-right {
+    top: 40px;
+    right: 35px;
+}
+
+.cat-nose {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    width: 20px;
+    height: 15px;
+    background-color: pink;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.cat-mouth {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    width: 50px;
+    height: 30px; /* Adjusted height */
+    border-radius: 0 0 25px 25px; /* Rounded bottom corners */
+    background-color: #ff9966; /* Color of the mouth */
+    transform: translateX(-50%) rotate(0deg); /* Center the smile */
+    clip-path: polygon(0 100%, 50% 50%, 100% 100%); /* Creates a smile shape */
+}
+
+.cat-whiskers {
+    position: absolute;
+    width: 60px;
+    height: 2px;
+    background-color: #333;
+}
+
+.cat-whiskers-left {
+    top: 75px;
+    left: -30px;
+}
+
+.cat-whiskers-left2 {
+    top: 80px;
+    left: -30px;
+    transform: rotate(-10deg);
+}
+
+.cat-whiskers-left3 {
+    top: 70px;
+    left: -30px;
+    transform: rotate(10deg);
+}
+
+.cat-whiskers-right {
+    top: 75px;
+    right: -30px;
+}
+
+.cat-whiskers-right2 {
+    top: 80px;
+    right: -30px;
+    transform: rotate(10deg);
+}
+
+.cat-whiskers-right3 {
+    top: 70px;
+    right: -30px;
+    transform: rotate(-10deg);
+}
+
+@keyframes cat-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+@keyframes cat-jump {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-80px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+}
+
+.cat.jump {
+    animation: cat-jump 0.5s ease-in-out;
+}
